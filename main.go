@@ -10,9 +10,9 @@ import (
 )
 
 func main() {
-	repo, _ := git.PlainOpen("/Users/sammyteillet/.datadrift/default")
-	hash := plumbing.NewHash("dbe8af0a6c67ee0e5e903b601cdb8ae8dd11bae0")
-	parentHash := plumbing.NewHash("0057446b4b461cdcbf27dfb020395098190a229a")
+	repo, _ := git.PlainOpen(".")
+	hash := plumbing.NewHash("a34586878c3410b6cd5cedf9ae604e366502d29f")
+	parentHash := plumbing.NewHash("cfc333497085ec3bd924ab0d5a71e525d5ed9910")
 	commit, err := repo.CommitObject(hash)
 	if err != nil {
 		log.Println(err)
@@ -48,7 +48,7 @@ func main() {
 	// Iterate over the changes and find the diff for the specific file
 	for _, change := range changes {
 		log.Println(change.From.Name, change.To.Name)
-		if change.From.Name == "mrr_7.csv" || change.To.Name == "mrr_7.csv" {
+		if change.From.Name == "mrr.csv" || change.To.Name == "mrr.csv" {
 			fmt.Printf("Change detected in file 'mrr_7':\n")
 
 			// Get the content diff
